@@ -114,6 +114,7 @@ export default {
 			const AuthData = new FormData();
 			AuthData.append('email', this.email)
 			AuthData.append('password', this.password)
+			AuthData.append('name', this.name)
 			await this.$axios.post('/v1/auth', AuthData)
 			.then((response) => {
 				const user_data = response.data.data
