@@ -118,16 +118,9 @@ export default {
 			await this.$axios.post('/v1/auth', AuthData)
 			.then((response) => {
 				const user_data = response.data.data
+				this.$auth.loginWith('local', {data: {email: this.email, password: this.password}})
 			}).catch((err) => {
 				console.log(err)
-			})
-			await this.$auth.loginWith('local', {data: {email: this.email, password: this.password}})
-			.then((response) => {
-				const headers = {
-					uid: response.headers['uid'],
-					access_token: response.headers['access-token'],
-					client: response.headers['client']
-				}
 			})
 		},
 	}
